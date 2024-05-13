@@ -16,6 +16,7 @@ public class AuroraApp {
     public static void main(String[] args) {
         
         AuroraApp auroraApp = new AuroraApp();
+        AppSettings settings = new AppSettings();
         // String statusColor = new StatusParser().getCurrentStatusColor();
         // System.out.println("The status color is: " + statusColor);
         auroraApp.startGUI();
