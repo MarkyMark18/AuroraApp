@@ -64,6 +64,25 @@ public class AuroraGUISettingsPanel extends JPanel {
         radioButtonPanel.add(amberNotifyRadioButton);
         radioButtonPanel.add(redNotifyRadioButton);
 
+        StatusColor notifyRadioButtonInitialSelection = settings.getNotifyAlertLevel();
+
+        switch (notifyRadioButtonInitialSelection) {
+            case GREEN:
+                notifySettingGroup.setSelected(greenNotifyRadioButton.getModel(), true);
+                break;
+            case YELLOW:
+                notifySettingGroup.setSelected(yellowNotifyRadioButton.getModel(), true);
+                break;
+            case AMBER:
+                notifySettingGroup.setSelected(amberNotifyRadioButton.getModel(), true);
+                break;
+            case RED:
+                notifySettingGroup.setSelected(redNotifyRadioButton.getModel(), true);
+                break;
+            default:
+                break;
+        }
+
         add(radioButtonPanel);
 
         addListeners();

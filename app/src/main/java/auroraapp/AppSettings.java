@@ -13,7 +13,7 @@ public class AppSettings {
 
     private Properties properties;
     private final String settingsDirectoryPath = System.getProperty("user.home") + "/auroraapp/settings";
-    private File settingsFile;
+    private File settingsFile = new File(settingsDirectoryPath, "settings.prop");
     private static final AppSettings instance = new AppSettings();
 
     /**
@@ -60,8 +60,6 @@ public class AppSettings {
      * 
      */
     private void createSettingsFile() {
-
-        settingsFile = new File(settingsDirectoryPath, "settings.prop");
 
         try {
             
@@ -142,8 +140,8 @@ public class AppSettings {
      */
     public void setNotifyAlertLevel(StatusColor color) {
 
-        System.out.println("Setting alert notification level to: " + color.name());
         properties.setProperty("notifyAlertLevel", color.name());
+        saveSettingsToFile();
 
     }
 
