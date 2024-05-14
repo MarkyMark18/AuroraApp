@@ -1,9 +1,6 @@
 package auroraapp.gui;
 
 import javax.swing.*;
-
-import com.google.common.eventbus.DeadEvent;
-
 import java.awt.*;
 
 
