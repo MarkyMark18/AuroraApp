@@ -14,6 +14,7 @@ public class AppSettings {
     private Properties properties;
     private final String settingsDirectoryPath = System.getProperty("user.home") + "/auroraapp/settings";
     private File settingsFile;
+    private static final AppSettings instance = new AppSettings();
 
     /**
      * 
@@ -24,6 +25,15 @@ public class AppSettings {
         loadSettingsFromFile();
 
     }
+
+    
+    /**
+     * 
+     */
+    public static AppSettings getInstance() {
+        return instance;
+    }
+
 
     /**
      * 
@@ -70,7 +80,7 @@ public class AppSettings {
     /**
      * 
      */
-    public void createSettingsProperties() {
+    private void createSettingsProperties() {
 
         // Defaults to RED when program is first run or settings file has been deleted
         setNotifyAlertLevel(StatusColor.RED);
@@ -81,7 +91,7 @@ public class AppSettings {
     /**
      * 
      */
-    public void loadSettingsFromFile() {
+    private void loadSettingsFromFile() {
 
         try {
 
@@ -132,6 +142,7 @@ public class AppSettings {
      */
     public void setNotifyAlertLevel(StatusColor color) {
 
+        System.out.println("Setting alert notification level to: " + color.name());
         properties.setProperty("notifyAlertLevel", color.name());
 
     }
