@@ -8,9 +8,9 @@ import java.net.URI;
 
 public class StatusParser {
 
-    final String APIURL = "http://aurorawatch-api.lancs.ac.uk/0.2/";
+    final static String APIURL = "http://aurorawatch-api.lancs.ac.uk/0.2/";
 
-    public String getCurrentStatusColor() {
+    public static StatusColor getCurrentStatusColor() {
 
         try {
 
@@ -41,11 +41,11 @@ public class StatusParser {
 
             StatusColor statusColor = StatusColor.valueOf(statusValue.toUpperCase());
 
-            return statusColor.toString();
+            return statusColor;
 
         } catch (Exception e) {
             e.printStackTrace();
-            return e.getMessage();
+            return null;
         } 
     }
 
