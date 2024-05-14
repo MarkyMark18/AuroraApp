@@ -1,20 +1,20 @@
 package auroraapp;
 
+import java.time.LocalDateTime;
 
 /**
  * 
  */
 public class AlertStatus {
 
-    private StatusColor currentStatus;
-    private static final AlertStatus alertStatus = new AlertStatus();
+    private LocalDateTime statusDateTime;
+    private StatusColor statusColor;
+    private static AlertStatus alertStatus;
 
     /**
      * 
      */
-    public AlertStatus() {
-
-        currentStatus = StatusParser.getCurrentStatusColor();
+    private AlertStatus() {
 
     }
 
@@ -23,7 +23,20 @@ public class AlertStatus {
      * @return
      */
     public static AlertStatus getInstance() {
+        
+        if (  alertStatus == null  ) {
+            alertStatus = new AlertStatus();
+            alertStatus = StatusParser.retrieveCurrentStatus();
+        }
+
         return alertStatus;
+    }
+
+    /**
+     * 
+     */
+    public LocalDateTime getAlertDateTime() {
+        return alertStatus.statusDateTime;
     }
 
 
@@ -31,22 +44,25 @@ public class AlertStatus {
      * 
      */
     public StatusColor getAlertStatus() {
-        return currentStatus;
+        return alertStatus.statusColor;
     }
+
+
+    /**
+     * 
+     * @param status
+     */
+    public void setAlertDateTime(LocalDateTime status) {
+        alertStatus.statusDateTime = status;
+    }
+
 
     /**
      * 
      * @param status
      */
     public void setAlertStatus(StatusColor status) {
-        currentStatus = status;
-    }
-
-    /**
-     * 
-     */
-    public void updateStatusColor() {
-        setAlertStatus(StatusParser.getCurrentStatusColor());
+        alertStatus.statusColor = status;
     }
 
 }
