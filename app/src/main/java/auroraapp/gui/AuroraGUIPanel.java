@@ -1,6 +1,9 @@
 package auroraapp.gui;
 
 import javax.swing.*;
+
+import com.google.common.eventbus.DeadEvent;
+
 import java.awt.*;
 
 
@@ -20,6 +23,21 @@ public class AuroraGUIPanel extends JPanel {
         headerPanel.add(heading);
         add(headerPanel, BorderLayout.NORTH);
 
+        // Create the content panel for 
+        JPanel contentPanel = new JPanel();
+        contentPanel.setPreferredSize(new Dimension(400, 450));
+        contentPanel.setLayout(new BorderLayout());
+        add(contentPanel, BorderLayout.CENTER);
+
+        // TODO Create the Alert Level panel and add to content panel
+        AuroraGUIAlertLevelPanel alertLevelPanel = new AuroraGUIAlertLevelPanel();
+        contentPanel.add(alertLevelPanel, BorderLayout.NORTH);
+
+        // TODO Create the Settings panel and add to content panel
+        AuroraGUISettingsPanel settingsPanel = new AuroraGUISettingsPanel();
+        contentPanel.add(settingsPanel, BorderLayout.SOUTH);
+
+        // Create the footer panel
         JPanel footerPanel = new JPanel();
         footerPanel.setPreferredSize(new Dimension(400, 50));
         footerPanel.setBackground(Color.BLACK);
@@ -34,8 +52,6 @@ public class AuroraGUIPanel extends JPanel {
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-
-
 
     }
 
