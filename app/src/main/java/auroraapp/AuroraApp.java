@@ -10,6 +10,8 @@ public class AuroraApp {
         AuroraGUIPanel auroraGUIPanel = new AuroraGUIPanel();
         AuroraGUI auroraGUI = new AuroraGUI(auroraGUIPanel);
         auroraGUI.setVisible(true);
+        AlertStatus.compareStatus(AppSettings.getInstance().getNotifyAlertLevel(),
+                AlertStatus.getInstance().getAlertStatus(), auroraGUI);
 
     }
 
