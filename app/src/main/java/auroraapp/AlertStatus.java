@@ -1,7 +1,5 @@
 package auroraapp;
 
-import auroraapp.gui.AuroraGUI;
-
 import java.awt.*;
 import java.time.LocalDateTime;
 
@@ -30,7 +28,7 @@ public class AlertStatus {
         int statusAsInt = StatusColor.statusAsInt(status);
 
         if (  statusAsInt >= settingAsInt  ) {
-            String message = "ALERT! Status is currently " + status.toString();
+            String message = "ALERT! Status is currently " + status;
             StatusNotifier.sendNotification(parentComponent, message);
         }
 
